@@ -42,7 +42,7 @@ The original Hershey fonts are indexed differently from unicode, so there're tab
 
 ### Parsing & Rendering
 
-An example Hershey font parser & renderer in javascript and [p5.js](http://p5js.org) is included in `./p5-hershey`, which is used to drive the [Live Demo](https://lingdong-.github.io/ttf2hershey/).
+An example Hershey font parser & renderer in javascript and [p5.js](http://p5js.org) can be found at [LingDong-/p5-hershey-js](https://github.com/LingDong-/p5-hershey-js), which is used to drive this [Live Demo](https://lingdong-.github.io/ttf2hershey/).
 
 
 ## Known Issues

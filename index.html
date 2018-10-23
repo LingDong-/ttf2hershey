@@ -1,7 +1,7 @@
 <!DOCTYPE html>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
-<script src="p5-hershey/p5.hershey.js"></script>  
-<script src="p5-hershey/p5.hershey.data.js"></script>  
+<script src="http://cdn.jsdelivr.net/gh/LingDong-/p5-hershey-js@f1afc8ad8b5e75ceefee2a3d6a9d6d5dc2e103f9/p5.hershey.js"></script>
+<script src="http://cdn.jsdelivr.net/gh/LingDong-/p5-hershey-js@f1afc8ad8b5e75ceefee2a3d6a9d6d5dc2e103f9/p5.hershey.data.js"></script>
 <script>
 
 var pangrams = [
@@ -24,7 +24,7 @@ var files = [];
 var fonts = [];
 
 function parseHershey(txt){
-  return P5.hershey.readFromText(txt);
+  return P5.hershey.parseFontString(txt);
 }
 
 function preload(){
