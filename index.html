@@ -1,0 +1,84 @@
+<!DOCTYPE html>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+<script src="p5-hershey/p5.hershey.js"></script>  
+<script src="p5-hershey/p5.hershey.data.js"></script>  
+<script>
+
+var pangrams = [
+  "Jived fox nymph grabs quick waltz.",
+  "Glib jocks quiz nymph to vex dwarf.",
+  "Sphinx of black quartz, judge my vow.",
+  "How vexingly quick daft zebras jump!",
+  "The five boxing wizards jump quickly.",
+  "Jackdaws love my big sphinx of quartz.",
+  "Pack my box with five dozen liquor jugs.",
+]
+
+var filenames = [
+  "hershey/Ubuntu.hf.txt",
+  "hershey/UbuntuMono-B.hf.txt",
+  "hershey/TimesNewRoman.hf.txt",
+  "hershey/LibreBaskerville.hf.txt",
+]
+var files = [];
+var fonts = [];
+
+function parseHershey(txt){
+  return P5.hershey.readFromText(txt);
+}
+
+function preload(){
+  for (var i = 0; i < filenames.length; i++){
+    files[i] = loadStrings(filenames[i]);
+  }
+}
+
+function setup() {
+  createCanvas(800, 800);
+  for (var i = 0; i < files.length; i++){
+    fonts[i] = parseHershey(files[i].join("\n"));
+  }
+
+}
+function draw() {
+  background(255);
+ 
+  var txt;
+
+  for (var i = 0; i < fonts.length; i++){
+    push();
+    translate(10,120*(i+1));
+
+    push();
+    noStroke();
+    fill(0);
+    text(filenames[i],0,20);
+    pop();
+
+    push();
+    scale(1.5);
+    noFill();
+    stroke(0);
+    strokeWeight(1);
+    txt = pangrams[i];
+    P5.hershey.putText(txt,{
+      font:fonts[i],
+      cmap:(x)=>(x),
+      noise:document.getElementById('noise_slider').value/100,
+    })
+    pop();
+
+    pop();
+  }
+}
+
+</script>
+<html>
+  <head>
+  </head>
+
+  <body style="text-align:center; font-family:sans-serif;">
+    <h1>ttf2hershey</h1>
+    <div><input id="noise_slider" type="range" min="0" max="100" value="50"></div>
+  </body>
+</html>
