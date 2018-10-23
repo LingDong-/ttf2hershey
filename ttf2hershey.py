@@ -6,7 +6,7 @@
 # - http://paulbourke.net/dataformats/hershey/
 
 import sys
-from lib.truetype import *
+from truetype.truetype import *
 
 def tohershey(text,font_path="ttf/ubuntu.ttf",kern=0,verbose=True):
     ttf = TrueTypeFont(font_path,verbose=verbose)
