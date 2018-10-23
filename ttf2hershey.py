@@ -5,10 +5,11 @@
 # - https://en.wikipedia.org/wiki/Hershey_fonts
 # - http://paulbourke.net/dataformats/hershey/
 
+import sys
 from lib.truetype import *
 
-def tohershey(text,font_path="ttf/ubuntu.ttf",kern=0):
-    ttf = TrueTypeFont(font_path)
+def tohershey(text,font_path="ttf/ubuntu.ttf",kern=0,verbose=True):
+    ttf = TrueTypeFont(font_path,verbose=verbose)
     outer = ttf.ttf.xMin, ttf.ttf.yMin, ttf.ttf.xMax, ttf.ttf.yMax
     cmax = (36-kern)*2
     umax = max( abs(outer[2]-outer[0]),
@@ -59,9 +60,9 @@ def tohershey(text,font_path="ttf/ubuntu.ttf",kern=0):
     return result
 
 if __name__ == "__main__":
-    font_name = "Ubuntu"
+    input_path = sys.argv[1]
     characters = "".join([chr(i) for i in range(32,128)])
-    open("hershey/"+font_name+".hf.txt",'w').write(tohershey(characters,font_path="ttf/"+font_name+".ttf"))
+    print tohershey(characters,font_path=input_path,verbose=False)
 
 
 
